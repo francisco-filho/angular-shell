@@ -1,7 +1,6 @@
 {
   "name": "angular-shell",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,5 +9,17 @@
   "license": "ISC",
   "devDependencies": {
     "serve": "^1.4.0"
-  }
+  },
+  "dependencies": {
+    "serve": "^1.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francisco-filho/angular-shell.git"
+  },
+  "bugs": {
+    "url": "https://github.com/francisco-filho/angular-shell/issues"
+  },
+  "homepage": "https://github.com/francisco-filho/angular-shell#readme",
+  "description": ""
 }
