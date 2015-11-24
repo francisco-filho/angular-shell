@@ -5,7 +5,74 @@
     <title>Angular Application</title>
     <link href="lib/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="container">
+    <form name="signup_form" novalidate ng-submit="signupForm()" ng-controller="signupController">
+        <fieldset>
+            <legend>Signup</legend>
+            <div class="row">
+                <div class="col-lg-12 form-group">
+                    <label>Your Name</label>
+                    <input type="text"
+                            class="form-control"
+                            placeholder="Name"
+                            name="name"
+                            ng-model="name"
+                            ng-minlength=3 ng-maxlength=20
+                            required />
+                    <div class="error"
+                        ng-show="signup_form.name.$dirty && signup_form.name.$invalid
+                        && submitted">
+                        <p>error</p>
+                        <small class="error" ng-show="signup_form.name.$error.required">
+                            Your Name is Required
+                        </small>
+                        <small class="error" ng-show="signup_form.name.$error.minlength">
+                        Type at least 3 characters</small>
+                        <small class="error" ng-show="signup_form.name.$error.maxlength">
+                        Max length is 20</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 form-group">
+                    <label>Your email</label>
+                    <input type="email"
+                            placeholder="your email here"
+                            class="form-control"
+                            ng-model="email"
+                            name="email"
+                            required />
+                    <div class="error" ng-show="signup_form.email.$dirty 
+                            && signup_form.email.$invalid && submitted">
+                        <p>error</p>
+                        <small class="error" ng-show="signup_form.email.$error.required">
+                            Your E-mail is Required
+                        </small>
+                        <small class="error" ng-show="signup_form.email.$error.email">Invalid Email</small>
+                    </div>
+                </div>
+                <div class="col-lg-4 form-group">
+                    <label>Username</label>
+                    <input type="text"
+                            placeholder="your username here"
+                            class="form-control"
+                            ng-model="username"
+                            name="username"
+                            required ensure-unique />
+                    <div class="error" ng-show="signup_form.username.$dirty 
+                            && signup_form.username.$invalid && submitted">
+                        <p>error</p>
+                        <small class="error" ng-show="signup_form.username.$error.required"> Your Username is Required </small>
+                        <small class="error" ng-show="signup_form.username.$error.unique">Not Unique</small>
+                    </div>
+                </div>
+                <div class="form-group col-lg-4">
+                    <button class="btn btn-primary" type="submit" >Submit</button>
+                </div>
+            </div>
+            </div>
+        </fieldset>
+    </form>
    <script src="lib/vendor/jquery/dist/jquery.min.js"></script>
    <script src="lib/vendor/angular/angular.min.js"></script>
    <script src="public/app/app.js"></script>
