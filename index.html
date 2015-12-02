@@ -5,7 +5,22 @@
     <title>Angular Application</title>
     <link href="lib/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body ng-controller="MainCtrl as model" class="container">
+    <table class="table table-striped table-bordered" 
+            dd-ordered model-order="model.order" model-reverse="model.reverse">
+        <thead>
+            <tr>
+                <th dd-order-by="name">Name</th>
+                <th dd-order-by="id">id</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in model.items | orderBy:model.order:model.reverse">
+                <td>{{item.name}}</td>
+                <td>{{item.id}}</td>
+            </tr>
+        </tbody>
+    </table>
    <script src="lib/vendor/jquery/dist/jquery.min.js"></script>
    <script src="lib/vendor/angular/angular.min.js"></script>
    <script src="public/app/app.js"></script>
