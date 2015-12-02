@@ -28,7 +28,7 @@
                     this.orderBy = function(name){
                         var r = $scope.orderAttr($scope);
                         $scope.orderAttr.assign($scope,name);
-                        if (name != $scope.reverseAttr($scope)){
+                        if (name == r){
                             this.reverseOrder();
                         }
                         $scope.$apply();
@@ -36,23 +36,26 @@
                     this.getCssClass = function(){
                         return $scope.reverseAttr($scope) ? 'desc' : 'asc';
                     }
+                    this.getOrder = function(){
+                        return $scope.orderAttr($scope);
+                    }
                 }
             }
         })
-        .directive('ddOrderBy', function($timeout){
+        .directive('ddOrderBy', function($parse, $timeout){
             return {
                 restrict: 'A',
                 require: '^ddOrdered',
                 link: function(scope, el, attr, ctrl){
-                    updateClasses();
-
+                    updateClasses(true);
                     el.on('click', function(){
                         ctrl.orderBy(attr.ddOrderBy);
                         updateClasses();
                     });
 
-                    function updateClasses(){
-                        el.closest('thead').find('th')
+                    function updateClasses(test){
+                        if (test && ctrl.getOrder() != attr.ddOrderBy ) return; 
+                        el.closest('tr').find('th')
                             .removeClass('order')
                             .removeClass('asc')
                             .removeClass('desc');
