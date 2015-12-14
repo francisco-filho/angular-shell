@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-    angular.module('myApp', [])
+    angular.module('myApp', ['ngAnimate'])
         .controller('MainCtrl', function($scope){
             var model = this;
             model.order = 'name'
@@ -12,6 +12,15 @@
                 {id: 3, name: 'vany'},
                 {id: 4, name: 'fernandinho'}
             ]
+
+            model.micropolo = {
+                nome: 'BA1',
+                logado: false
+            };
+
+            model.toggle = function(){
+                model.micropolo.logado = !model.micropolo.logado;
+            }
         })
         .directive('ddOrdered', function($parse){
             return {

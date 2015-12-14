@@ -9,6 +9,24 @@
             background-color: #057;
             color: #fff;
         }
+        .micropolo {
+            float: left;
+            border: 1px solid #ccc;
+            padding: 20px;
+            font-size: 36px;
+            background-color: #fff;            
+        }
+        .micropolo.on {
+            background-color: green;
+            color: white;
+        }
+        .micropolo.off {
+            background-color: #ffea00;
+            color: black;
+        }
+        .on-add, .on-remove {
+            transition: background-color 2s, color 2s;
+        }
     </style>
 </head>
 <body ng-controller="MainCtrl as model" class="container">
@@ -27,8 +45,18 @@
             </tr>
         </tbody>
     </table>
+    <div class="micro-container">
+        <div class="micropolo" 
+                ng-class="{'on': model.micropolo.logado == true, 'off': model.micropolo.logado == false}">
+            {{ model.micropolo.nome}}
+        </div>
+    </div>
+    <a href="" class="button button-primary"
+                ng-click="model.toggle()"
+        >Mudar</a>
    <script src="lib/vendor/jquery/dist/jquery.min.js"></script>
    <script src="lib/vendor/angular/angular.min.js"></script>
+   <!-- <script src="lib/vendor/angular&#45;animate/angular&#45;animate.js"></script> -->
    <script src="public/app/app.js"></script>
 </body>
 </html>
