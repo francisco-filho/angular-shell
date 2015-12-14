@@ -18,6 +18,11 @@
                 logado: false
             };
 
+            model.list = [];
+            for (var i = 0; i < 168; i++){
+                model.list.push({id: i, nome: 'BA1', logado: false});
+            }
+
             model.toggle = function(){
                 model.micropolo.logado = !model.micropolo.logado;
             }

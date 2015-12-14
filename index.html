@@ -46,9 +46,9 @@
         </tbody>
     </table>
     <div class="micro-container">
-        <div class="micropolo" 
-                ng-class="{'on': model.micropolo.logado == true, 'off': model.micropolo.logado == false}">
-            {{ model.micropolo.nome}}
+        <div class="micropolo" ng-repeat="item in model.list"
+                ng-class="{'on': item.logado == true, 'off': item.logado == false}">
+            {{ item.nome}}
         </div>
     </div>
     <a href="" class="button button-primary"
